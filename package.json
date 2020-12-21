@@ -1,0 +1,41 @@
+{
+  "name": "somebirdsreviews",
+  "version": "1.0.0",
+  "description": "Review service for somebirds",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "db:seed": "mysql -u student < ./db/createDB.sql && node ./db/create_tables.js && node ./db/generate_data.js",
+    "db:createTables": "node ./db/create_tables.js",
+    "db:drop-tables": "node ./db/drop_tables.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rpt24saltysnack/somebirdsReviews.git"
+  },
+  "keywords": [
+    "reviews",
+    "feedback",
+    "somebirds"
+  ],
+  "author": "7MIMIRA",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rpt24saltysnack/somebirdsReviews/issues"
+  },
+  "homepage": "https://github.com/rpt24saltysnack/somebirdsReviews#readme",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "express": "^4.17.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "sequelize": "^6.3.5"
+  },
+  "devDependencies": {
+    "faker": "^5.1.0",
+    "mysql2": "^2.2.5",
+    "nodemon": "^2.0.6",
+    "webpack": "^5.11.0",
+    "webpack-cli": "^4.2.0"
+  }
+}
