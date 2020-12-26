@@ -6,13 +6,13 @@ const sequelize = new Sequelize('fec_somebirds_feedback', 'student', '',  {
   logging: false
 });
 
-sequelize.authenticate()
-.then(() => {
-  console.log('Connection has been established successfully.');
-})
-.catch((error) => {
-  console.error('Unable to connect to the database:', error);
-});
+// sequelize.authenticate()
+// .then(() => {
+//   console.log('Connection has been established successfully.');
+// })
+// .catch((error) => {
+//   console.error('Unable to connect to the database:', error);
+// });
 
 
 const Shoe = sequelize.define('Shoe', {
@@ -71,5 +71,6 @@ const Review = sequelize.define('Review', {
 
 module.exports = {
   Shoe: Shoe,
-  Review: Review
+  Review: Review,
+  Connection: sequelize
 };
