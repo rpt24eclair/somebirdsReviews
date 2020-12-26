@@ -4,7 +4,7 @@
   "description": "Review service for somebirds",
   "main": "index.js",
   "scripts": {
-    "test": "test",
+    "test": "jest",
     "db:seed": "mysql -u student < ./db/createDB.sql && node ./db/create_tables.js && node ./db/generate_data.js",
     "db:createTables": "node ./db/create_tables.js",
     "db:drop-tables": "node ./db/drop_tables.js"
@@ -33,6 +33,7 @@
   },
   "devDependencies": {
     "faker": "^5.1.0",
+    "jest": "^26.6.3",
     "mysql2": "^2.2.5",
     "nodemon": "^2.0.6",
     "webpack": "^5.11.0",
