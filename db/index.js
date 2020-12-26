@@ -23,11 +23,27 @@ const Shoe = sequelize.define('Shoe', {
   model: {
     type: DataTypes.INTEGER,
     allowNull: false
+  },
+  rating_average: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  fit_feedback_average: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  review_count: {
+    type: DataTypes.INTEGER,
+    allowNull: false
   }
 }, { timestamps: false });
 
 const Review = sequelize.define('Review', {
   name: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  headline: {
     type: DataTypes.STRING,
     allowNull: false
   },
