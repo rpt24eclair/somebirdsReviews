@@ -4,6 +4,7 @@
   "description": "Review service for somebirds",
   "main": "index.js",
   "scripts": {
+    "start" : "nodemon ./server/index.js",
     "test": "jest",
     "db:seed": "mysql -u student < ./db/createDB.sql && node ./db/create_tables.js && node ./db/generate_data.js",
     "db:createTables": "node ./db/create_tables.js",
