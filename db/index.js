@@ -67,7 +67,7 @@ const Review = sequelize.define('Review', {
       key: 'id'
     }
   },
-}, { timestamps: true });
+}, { timestamps: false });
 
 module.exports = {
   Shoe: Shoe,
