@@ -42,6 +42,4 @@ app.get('/shoes/:shoeId/rating', (req, res) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`listening on localhost:${PORT}`);
-});
+module.exports = app;
