@@ -19,12 +19,13 @@ it('GETs the correct response from /shoes/:shoeId/reviews/:count endpoint', asyn
 
 it(`/shoes/:shoeId/reviews/:count endpoint's response datashape is correct`, () => {
   let review1 = reviewResponse.body[0];
+  expect(typeof review1.id).toBe('number');
   expect(typeof review1.name).toBe('string');
   expect(typeof review1.headline).toBe('string');
   expect(typeof review1.review).toBe('string');
   expect(typeof review1.rating).toBe('number');
   expect(typeof review1.fit_feedback).toBe('number');
-  expect(typeof review1.shoe_id).toBe('number');
+  expect(typeof review1.date).toBe('string');
 });
 
 it('GETs the correct response from /shoes/:shoeId/rating endpoint', async (done) => {
@@ -36,6 +37,7 @@ it('GETs the correct response from /shoes/:shoeId/rating endpoint', async (done)
 
 it(`/shoes/:shoeId/rating endpoint's response datashape is correct`, () => {
   let shoe1 = ratingResponse.body;
+  expect(typeof shoe1.id).toBe('number');
   expect(typeof shoe1.model).toBe('number');
   expect(typeof shoe1.rating_average).toBe('string');
   expect(typeof shoe1.fit_feedback_average).toBe('string');
