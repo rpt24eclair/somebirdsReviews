@@ -6,6 +6,7 @@ const sequelize = new Sequelize('fec_somebirds_feedback', 'student', '',  {
   logging: false
 });
 
+// use to check database connection
 // sequelize.authenticate()
 // .then(() => {
 //   console.log('Connection has been established successfully.');
