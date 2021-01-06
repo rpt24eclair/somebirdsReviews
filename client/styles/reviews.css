@@ -1,0 +1,19 @@
+.reviewContainer {
+  border-top: solid 1px rgb(180, 180, 180);
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  padding: 20px 0px 20px 0px;
+}
+
+.leftColumn {
+  width: 21%;
+}
+
+.middleColumn {
+  width: 19%;
+}
+
+.rightColumn {
+  width: 60%;
+}
