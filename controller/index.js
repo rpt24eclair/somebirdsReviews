@@ -20,8 +20,8 @@ function getRating(shoeId) {
   return new Promise((resolve, reject) => {
     model.getRating(shoeId)
     .then((data) => {
-      let { id, model, rating_average, fit_feedback_average, review_count } = data[0];
-      resolve({ id, model, rating_average, fit_feedback_average, review_count });
+      let { id, name, model, rating_average, fit_feedback_average, review_count } = data[0];
+      resolve({ id, name, model, rating_average, fit_feedback_average, review_count });
     })
     .catch(err => {
       reject(err);

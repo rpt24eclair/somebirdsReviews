@@ -1,0 +1,30 @@
+.reviewContainer {
+  border-top: solid 1px rgb(180, 180, 180);
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  padding: 20px 0px 20px 0px;
+  font-family: helvetica;
+}
+
+.leftColumn {
+  width: 21%;
+}
+
+.middleColumn {
+  width: 19%;
+}
+
+.rightColumn {
+  width: 60%;
+}
+
+.date {
+padding-top: 6px;
+font-weight: 300;
+}
+
+.review {
+  padding-top: 6px;
+  font-weight: 300;
+}

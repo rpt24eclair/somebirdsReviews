@@ -23,6 +23,28 @@ function getDate(dateObject) {
   return formattedDate;
 }
 
+//React Component Utils
+
+function convertToCSSPositionData(rating) {
+  // range is from left values of -1.5% (small), 47.7% (true to size), 98.5% (large)
+  let [whole, decimal] = rating.split('.');
+  let isNegative = whole.length > 1;
+  if (isNegative) {
+    if (decimal > 0 && decimal < 4)
+      return {left: '47.6%'};
+    if (decimal > 3 && decimal < 8)
+      return {left: '22.3%'};
+    return {left: '-1.5%'};
+  } else {
+    if (decimal > 0 && decimal < 4)
+      return {left: '47.6%'};
+    if (decimal > 3 && decimal < 8)
+      return {left: '73.0%'};
+    return {left: '98.5%'};
+  }
+}
+
 module.exports = {
-  getDate
+  getDate,
+  convertToCSSPositionData
 };

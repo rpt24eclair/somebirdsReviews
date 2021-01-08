@@ -1,0 +1,14 @@
+.appContainer {
+  width: 100%;
+  font-family: helvetica;
+}
+
+.infoContainer {
+  text-align: center;
+}
+
+.text {
+  font-weight: 300;
+  letter-spacing: .7px;
+  font-size: 17px;
+}
