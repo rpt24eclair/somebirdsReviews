@@ -1,6 +1,6 @@
 import React from 'react';
 import StarBar from './starBar.jsx';
-import styles from '../styles/reviews.css';
+import styles from '../styles/review.css';
 
 function Review(props) {
   const { name, headline, review, rating, date } = props.review;
@@ -13,7 +13,7 @@ function Review(props) {
             <div className="name">
               <b>{name}</b>
             </div>
-            <div className="date">
+            <div className={styles.date}>
               {date}
             </div>
           </div>
@@ -26,7 +26,7 @@ function Review(props) {
             <div className="headline">
               <b>{headline}</b>
             </div>
-            <div className="review">
+            <div className={styles.review}>
               {review}
             </div>
           </div>

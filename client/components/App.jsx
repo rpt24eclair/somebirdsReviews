@@ -7,17 +7,20 @@ import Axios from 'axios';
 
 function App(props) {
   const [shoeID, setShoeID] = useState(props.shoeID || 1);
+  const [shoeName, setShoeName] = useState('');
   const [reviewCount, setReviewCount] = useState(3);
   const [reviews, setReviews] = useState(['']);
   const [stars, setStars] = useState('0.0');
   const [fit, setFit] = useState('0.0');
   const [totalReviews, setTotalReviews] = useState(0);
+  const [reviewsFetched, setReviewsFetched] = useState(false);
+  const [ratingFetched, setRatingFetched] = useState(false);
 
   useEffect(() => {
     Axios.get(`/shoes/${shoeID}/reviews/${reviewCount}`)
     .then(reviews => {
       setReviews(reviews.data);
-      console.log(reviews.data);
+      setReviewsFetched(true);
     })
     .catch(err => {
       console.error(err);
@@ -27,11 +30,12 @@ function App(props) {
   useEffect(() => {
     Axios.get(`/shoes/${shoeID}/rating`)
     .then(rating => {
-      let { rating_average: stars, fit_feedback_average: fit, review_count: totalReviews } = rating.data;
+      let { name: name, rating_average: stars, fit_feedback_average: fit, review_count: totalReviews } = rating.data;
+      setShoeName(name);
       setStars(stars);
       setFit(fit);
       setTotalReviews(totalReviews);
-      console.table(rating.data);
+      setRatingFetched(true);
     })
     .catch(err => {
       console.error(err);
@@ -39,13 +43,15 @@ function App(props) {
   }, [shoeID]);
 
   return (
-    <div className={styles.appContainer}>
-      <Feedback />
-      <Reviews reviews={reviews} />
-      <MoreReviewsButton reviewCount={reviewCount} setReviewCount={setReviewCount} />
-      <div className={styles.infoContainer}>
-        <p className={styles.text}>currently displaying {reviews.length} of {totalReviews} reviews</p>
-      </div>
+    <div>
+      {reviewsFetched && ratingFetched && <div className={styles.appContainer}>
+        <Feedback shoeName={shoeName} stars={stars} fit={fit}/>
+        <Reviews reviews={reviews} />
+        <MoreReviewsButton reviewCount={reviewCount} setReviewCount={setReviewCount} />
+        <div className={styles.infoContainer}>
+          <p className={styles.text}>currently displaying {reviews.length} of {totalReviews} reviews</p>
+        </div>
+      </div>}
     </div>
   )
 }

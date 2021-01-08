@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../styles/star-bar.css';
+import styles from '../styles/star-bar-big.css';
 
 function StarBar(props) {
   const stars = props.stars; //<- will be of type string eg. '1.5' or number eg. 4
@@ -13,8 +13,8 @@ function StarBar(props) {
 
   return (
     <div>
-      {starArr.map(x => <div className={styles.smallStar}></div>)}
-      {hasHalfStar && <div className={styles.smallHalfStar}></div>}
+      {starArr.map(x => <div className={styles.bigStar}></div>)}
+      {hasHalfStar && <div className={styles.bigHalfStar}></div>}
     </div>
   )
 }

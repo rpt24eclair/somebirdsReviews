@@ -1,3 +1,43 @@
 .feedbackContainer {
+  display: inline-block;
+  font-family: helvetica;
+  width: 100%;
+  text-align: center;
+  padding-bottom: 38px;
+}
 
+.heading {
+  font-size: 30px;
+  font-weight: 700;
+  padding-bottom: 6px;
+}
+
+.starRating {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  padding-bottom: 40px;
+}
+
+.centeringDiv {
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+}
+
+.starBar {
+  padding-right: 7px;
+}
+
+.text {
+  padding-top: 2px;
+  padding-left: 7px;
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: .7px;
+}
+
+.fitRating {
+  display: inline-block;
 }
