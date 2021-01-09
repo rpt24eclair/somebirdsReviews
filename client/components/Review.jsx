@@ -1,5 +1,5 @@
 import React from 'react';
-import StarBar from './starBar.jsx';
+import StarBar from './StarBar.jsx';
 import styles from '../styles/review.css';
 
 function Review(props) {
