@@ -17,7 +17,7 @@ const sequelize = new Sequelize('fec_somebirds_feedback', 'student', '',  {
 // });
 
 
-const Shoe = sequelize.define('Shoe', {
+const Shoe = sequelize.define('shoe', {
   name: {
     type: DataTypes.STRING,
     allowNull: false
@@ -40,7 +40,7 @@ const Shoe = sequelize.define('Shoe', {
   }
 }, { timestamps: false });
 
-const Review = sequelize.define('Review', {
+const Review = sequelize.define('review', {
   name: {
     type: DataTypes.STRING,
     allowNull: false
