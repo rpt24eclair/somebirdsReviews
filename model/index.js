@@ -20,5 +20,17 @@ function getRating(shoeId) {
   });
 }
 
+function addReview(review) {
+  return Review.create(review);
+}
+
+function deleteReview(id) {
+  return Review.destroy({
+    where: { id: id }
+  });
+}
+
 module.exports.getReviews = getReviews;
 module.exports.getRating = getRating;
+module.exports.addReview = addReview;
+module.exports.deleteReview = deleteReview;

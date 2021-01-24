@@ -30,9 +30,33 @@ Run the following to generate the bundle.js file that is needed to generate our 
 npm run build
 ```
 
-### After Set Up
+## After Set Up
 Run the following to initiate the server
 ```
 npm run start
 ```
 and point your browser to **localhost:3003**
+
+## CRUD
+### Create
+```
+input: new shoe id
+endpoint: '/shoes/:shoeId/rating'
+example output:
+{
+    "id": 1,
+    "name": "Men's Wool Runners",
+    "model": 1,
+    "rating_average": "2.6",
+    "fit_feedback_average": "0.2",
+    "review_count": 12
+}
+```
+```
+input: new shoe id and number of reviews
+'/shoes/:shoeId/reviews/:count'
+```
+
+### Read
+```
+```
