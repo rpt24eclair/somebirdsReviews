@@ -9,6 +9,7 @@ app.use(bodyParser.json());
 
 app.use(express.static('public'));
 
+//read reviews
 app.get('/shoes/:shoeId/reviews/:count', (req, res) => {
   let { shoeId, count } = req.params;
   controller.getReviews(shoeId, count)
@@ -21,6 +22,7 @@ app.get('/shoes/:shoeId/reviews/:count', (req, res) => {
   });
 });
 
+//read rating
 app.get('/shoes/:shoeId/rating', (req, res) => {
   let { shoeId } = req.params;
   controller.getRating(shoeId)
@@ -33,6 +35,7 @@ app.get('/shoes/:shoeId/rating', (req, res) => {
   });
 });
 
+//create review
 app.post('/shoes/:shoeId/reviews', (req, res) => {
   let { shoeId } = req.params;
   let review = req.body;
@@ -47,9 +50,24 @@ app.post('/shoes/:shoeId/reviews', (req, res) => {
   });
 });
 
+//delete review
 app.delete('/shoes/reviews/:id', (req, res) => {
   let { id } = req.params;
   controller.deleteReview(id)
+  .then(data => {
+    res.send(data);
+  })
+  .catch(err => {
+    console.error(err);
+    res.end();
+  });
+});
+
+//update review
+app.put('/shoes/reviews/:id', (req, res) => {
+  let { id } = req.params;
+  let updatedReview = req.body;
+  controller.updateReview(id, updatedReview)
   .then(data => {
     res.send(data);
   })

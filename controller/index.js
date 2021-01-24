@@ -32,7 +32,6 @@ function getRating(shoeId) {
 }
 
 function addReview(review) {
-  console.log(review);
   return new Promise((resolve, reject) => {
     model.addReview(review)
     .then(response => {
@@ -66,7 +65,24 @@ function deleteReview(id) {
   }
 )};
 
-module.exports.getReviews = getReviews;
-module.exports.getRating = getRating;
-module.exports.addReview = addReview;
-module.exports.deleteReview = deleteReview;
+function updateReview (id, updatedReview) {
+  return new Promise((resolve, reject) => {
+    model.updateReview(id, updatedReview)
+    .then(response => {
+      resolve({
+        message: `Updated review with id ${id}.`
+      });
+    })
+    .catch(err => {
+      reject(err);
+    });
+  }
+)};
+
+module.exports = {
+  getReviews,
+  getRating,
+  addReview,
+  deleteReview,
+  updateReview,
+};

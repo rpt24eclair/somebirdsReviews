@@ -30,7 +30,21 @@ function deleteReview(id) {
   });
 }
 
-module.exports.getReviews = getReviews;
-module.exports.getRating = getRating;
-module.exports.addReview = addReview;
-module.exports.deleteReview = deleteReview;
+function updateReview(id, updatedReview) {
+  return Review.update(
+    updatedReview,
+    {
+      where: {
+        id: id
+      }
+    }
+  )
+}
+
+module.exports = {
+  getReviews,
+  getRating,
+  addReview,
+  deleteReview,
+  updateReview,
+};
