@@ -41,7 +41,11 @@ and point your browser to **localhost:3003**
 
 ### Create Review
 input: shoe id and review object
-enpoint: '/shoes/:shoeId/reviews'
+
+enpoint
+```
+'/shoes/:shoeId/reviews'
+```
 example object
 ```
 {
@@ -56,7 +60,11 @@ example object
 
 ### Read Rating
 input: shoe id
-endpoint: '/shoes/:shoeId/rating'
+
+endpoint
+```
+'/shoes/:shoeId/rating'
+```
 example output
 ```
   {
@@ -71,7 +79,11 @@ example output
 
 ### Read Reviews
 input: shoe id and number of reviews
-endpoint: '/shoes/:shoeId/reviews/:count'
+
+endpoint
+```
+'/shoes/:shoeId/reviews/:count'
+```
 example output
 ```
 [
@@ -98,7 +110,11 @@ example output
 
 ### Update Review
 input: review id and updated review object
-endpoint: '/shoes/reviews/:id'
+
+endpoint
+```
+'/shoes/reviews/:id'
+```
 example output
 ```
 {
@@ -108,7 +124,11 @@ example output
 
 ### Delete Review
 input: review id
-endpoint: '/shoes/reviews/:id'
+
+endpoint
+```
+'/shoes/reviews/:id'
+```
 example output
 ```
 {
