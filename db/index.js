@@ -4,7 +4,7 @@ const sequelize = new Sequelize('fec_somebirds_feedback', 'student', '',  {
   // host: process.env.DEV_DB_HOST || 'fec-somebirds.cvmpdjgctjaa.us-east-2.rds.amazonaws.com',
   host: 'localhost',
   port: 3306,
-  dialect: 'mysql',
+  dialect: 'postgres',
   logging: false
 });
 
@@ -16,7 +16,6 @@ const sequelize = new Sequelize('fec_somebirds_feedback', 'student', '',  {
 // .catch((error) => {
 //   console.error('Unable to connect to the database:', error);
 // });
-
 
 const Shoe = sequelize.define('shoe', {
   name: {

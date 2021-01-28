@@ -9,7 +9,8 @@
     "test": "jest",
     "db:seed": "mysql -u student < ./db/createDB.sql && node ./db/create_tables.js && node ./db/generate_data.js",
     "db:createTables": "node ./db/create_tables.js",
-    "db:dropTables": "node ./db/drop_tables.js"
+    "db:dropTables": "node ./db/drop_tables.js",
+    "psql:seed" : "psql postgres < ./db/createDB.sql && node ./db/create_tables.js && node ./db/generate_data.js"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,8 @@
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "pg": "^8.5.1",
+    "pg-hstore": "^2.3.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "sequelize": "^6.3.5"
