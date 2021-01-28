@@ -19,7 +19,7 @@ let rating = 0;
 let fitFeedback = 0;
 
 async function generateAndInsertBatches() {
-  for (var i = 0; i < 1000; i++) {
+  for (var i = 0; i < 10000; i++) {
     gender.forEach(gender => {
       material.forEach(material => {
         action.forEach(action => {
