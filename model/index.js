@@ -20,5 +20,31 @@ function getRating(shoeId) {
   });
 }
 
-module.exports.getReviews = getReviews;
-module.exports.getRating = getRating;
+function addReview(review) {
+  return Review.create(review);
+}
+
+function deleteReview(id) {
+  return Review.destroy({
+    where: { id: id }
+  });
+}
+
+function updateReview(id, updatedReview) {
+  return Review.update(
+    updatedReview,
+    {
+      where: {
+        id: id
+      }
+    }
+  )
+}
+
+module.exports = {
+  getReviews,
+  getRating,
+  addReview,
+  deleteReview,
+  updateReview,
+};
