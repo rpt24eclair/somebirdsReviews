@@ -1,4 +1,4 @@
-// const { Shoe, Review } = require('./index.js');
+const { Shoe, Review } = require('./index.js');
 const faker = require('faker');
 
 let shoeBulkData = [];
@@ -18,41 +18,51 @@ let count = 0;
 let rating = 0;
 let fitFeedback = 0;
 
-for (var i = 0; i < 100; i++) {
-  gender.forEach(gender => {
-    material.forEach(material => {
-      action.forEach(action => {
-        curReviews = reviews.slice(0,randomNumberGenerator(1,13));
-        curReviews.forEach((review, index) => {
-          let tempRating = randomNumberGenerator(1, 5);
-          let tempFitFeedback = randomNumberGenerator(-1, 1);
-          rating += tempRating;
-          fitFeedback += tempFitFeedback;
-          count += 1;
-          reviewBulkData.push({ name: faker.name.firstName(), headline: headlines[index], review: review, rating: tempRating, fit_feedback: tempFitFeedback, shoe_id: model });
+async function generateAndInsertBatches() {
+  for (var i = 0; i < 1000; i++) {
+    gender.forEach(gender => {
+      material.forEach(material => {
+        action.forEach(action => {
+          curReviews = reviews.slice(0,randomNumberGenerator(1,13));
+          curReviews.forEach((review, index) => {
+            let tempRating = randomNumberGenerator(1, 5);
+            let tempFitFeedback = randomNumberGenerator(-1, 1);
+            rating += tempRating;
+            fitFeedback += tempFitFeedback;
+            count += 1;
+            reviewBulkData.push({ name: faker.name.firstName(), headline: headlines[index], review: review, rating: tempRating, fit_feedback: tempFitFeedback, shoe_id: model });
+          });
+          shoeBulkData.push({ name: `${gender} ${material} ${action}`, model: model, rating_average: (rating / count).toFixed(1), fit_feedback_average: (fitFeedback / count).toFixed(1), review_count: count });
+          count = 0;
+          rating = 0;
+          fitFeedback = 0;
+          model++;
+          let rotations = randomNumberGenerator(1, 4);
+          for (let i = 0; i < rotations; i++) {
+            headlines.push(headlines.shift());
+            reviews.push(reviews.shift());
+          }
         });
-        shoeBulkData.push({ name: `${gender} ${material} ${action}`, model: model, rating_average: (rating / count).toFixed(1), fit_feedback_average: (fitFeedback / count).toFixed(1), review_count: count });
-        count = 0;
-        rating = 0;
-        fitFeedback = 0;
-        model++;
-        let rotations = randomNumberGenerator(1, 4);
-        for (let i = 0; i < rotations; i++) {
-          headlines.push(headlines.shift());
-          reviews.push(reviews.shift());
-        }
       });
     });
-  });
+
+
+    // console.log(shoeBulkData.length, reviewBulkData.length);
+
+    await Shoe.bulkCreate(shoeBulkData);
+    await Review.bulkCreate(reviewBulkData);
+
+    // Shoe.bulkCreate(shoeBulkData)
+    // .then (() => {
+    //   Review.bulkCreate(reviewBulkData);
+    // })
+    // .catch(err => {
+    //   console.error(err);
+    // });
+    console.log(i);
+    shoeBulkData = [];
+    reviewBulkData = [];
+  }
 }
 
-console.log(shoeBulkData.length, reviewBulkData.length);
-console.log(reviewBulkData[10], reviewBulkData[50000], reviewBulkData[(reviewBulkData.length - 1)]);
-
-// Shoe.bulkCreate(shoeBulkData)
-// .then (() => {
-//   Review.bulkCreate(reviewBulkData);
-// })
-// .catch(err => {
-//   console.error(err);
-// });
+generateAndInsertBatches();
