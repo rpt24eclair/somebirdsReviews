@@ -49,7 +49,7 @@ function deleteReview(id) {
   return new Promise((resolve, reject) => {
     model.deleteReview(id)
     .then(num => {
-      if (num == 1) {
+      if (num === 1) {
         resolve({
           message: "Review was deleted successfully!"
         });
