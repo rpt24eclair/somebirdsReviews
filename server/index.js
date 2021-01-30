@@ -2,7 +2,6 @@ const express = require ('express');
 const bodyParser = require('body-parser');
 const controller = require('../controller/index.js');
 const app = express();
-// const PORT = 3003;
 const PORT = process.env.PORT;
 
 app.use(bodyParser.urlencoded({ extended: true }));
