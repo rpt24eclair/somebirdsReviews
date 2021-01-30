@@ -10,7 +10,10 @@
     "db:seed": "mysql -u student < ./db/createDB.sql && node ./db/create_tables.js && node ./db/generate_data.js",
     "db:createTables": "node ./db/create_tables.js",
     "db:dropTables": "node ./db/drop_tables.js",
-    "psql:seed" : "psql postgres < ./db/createDB.sql && node ./db/create_tables.js && node ./db/generate_data.js"
+    "db:user": "node db/index.js",
+    "psql:seed": "psql postgres -U student ./db/createDB.sql && node ./db/create_tables.js && node ./db/generate_data.js",
+    "db:create": "sequelize-cli db:create",
+    "model:generate": "sequelize-cli model:generate"
   },
   "repository": {
     "type": "git",
@@ -32,11 +35,8 @@
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "pg": "^8.5.1",
-    "pg-hstore": "^2.3.3",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "sequelize": "^6.3.5"
+    "react-dom": "^17.0.1"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.12.11",
@@ -47,6 +47,10 @@
     "jest": "^26.6.3",
     "mysql2": "^2.2.5",
     "nodemon": "^2.0.6",
+    "pg": "^8.5.1",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.5.0",
+    "sequelize-cli": "^6.2.0",
     "style-loader": "^2.0.0",
     "supertest": "^6.0.1",
     "webpack": "^5.11.0",
