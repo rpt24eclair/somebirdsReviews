@@ -7,14 +7,13 @@ let randomIntGenerator = (min, max) => {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min) + min);
-}
+};
 
 let randomNumberGenerator = (min, max) => {
   return Math.random() * (max - min) + min;
 }
 
 let shoesIndex = 0;
-
 
 class Writer {
   constructor(file) {
@@ -34,44 +33,46 @@ class Writer {
       // Wrap it in a promise if you wish to wait for the callback.
       this.writer.end();
   }
+};
 
-}
-
-(async() => {
+let generateShoes = async() => {
   const writer = new Writer('shoes.csv');
 
   let index = randomIntGenerator(0, 13);
   let ratingAverage = randomNumberGenerator(1, 5).toFixed(1);
   let fitAverage = randomNumberGenerator(-1, 1).toFixed(1);
 
-  for(let i = 1; i <= 10000000; i++) {
-    if (i % 100000 === 0) {
+  for(let i = 1; i <= 100000; i++) {
+    if (i % 100 === 0) {
       index = randomIntGenerator(0, 13);
       ratingAverage = randomNumberGenerator(1, 5).toFixed(1);
       fitAverage = randomNumberGenerator(-1, 1).toFixed(1);
       console.log(i);
-    }
+    };
 
     let content = {
       shoe_name: shoes[shoesIndex],
       model: i,
       rating_average: ratingAverage,
       fit_feedback_average : fitAverage,
-    }
+    };
 
     const res = writer.write(content);
     if (shoesIndex > 101) {
       shoesIndex = 0;
     } else {
       shoesIndex++;
-    }
+    };
 
     if (res instanceof Promise) {
         // You can remove this if, and leave just: await writer.write...
         // but the code will be slower
         await res; // This will wait for the stream to emit the drain event
-    }
-  }
+    };
+  };
   writer.end();
-})();
+};
 
+module.exports = {
+  generateShoes: generateShoes
+};
