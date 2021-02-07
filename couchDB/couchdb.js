@@ -1,4 +1,4 @@
-var nano = require('nano');
+const nano = require('nano');
+const  { username, password } = require('../utils/creds.js');
 
-// console.log(process.env.mySQL_PORT);
-module.exports = nano('http://sdc_admin:HR2021@127.0.0.1:5984');
+module.exports = nano(`http://${username}:${password}@127.0.0.1:5984`);

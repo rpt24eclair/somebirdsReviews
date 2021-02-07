@@ -1,9 +1,7 @@
-var async = require('async');
-var couch = require('./couchdb');
+const async = require('async');
+const couch = require('./couchdb');
 
-var databases = ['sdc_somebirds_shoes', 'sdc_somebirds_reviews'];
-
-module.exports = initCouch;
+const databases = ['sdc_somebirds_shoes', 'sdc_somebirds_reviews'];
 
 function initCouch(cb) {
   createDatabases(cb);
@@ -21,3 +19,12 @@ function createDatabase(db, cb) {
     cb(err);
   });
 }
+
+initCouch((err) => {
+  if (err) {
+    throw err
+  }
+  else {
+    console.log('couchdb initialized');
+  }
+});
