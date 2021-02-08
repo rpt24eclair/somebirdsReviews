@@ -40,10 +40,10 @@ class Writer {
 const generateReviews = async() => {
   const writer = new Writer('reviews.csv');
 
-  let index = randomIntGenerator(0, 13);
+  let index = randomIntGenerator(0, 6);
 
-  for(let i = 1; i <= 100000; i++) {
-    if (i % 100 === 0) {
+  for(let i = 1; i <= 10000000; i++) {
+    if (i % 100000 === 0) {
       index = randomIntGenerator(0, 13);
       console.log(i);
     };
