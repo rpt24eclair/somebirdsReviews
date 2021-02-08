@@ -9,7 +9,8 @@
     "test": "jest",
     "db:seed": "mysql -u student < ./db/createDB.sql && node ./db/create_tables.js && node ./db/generate_data.js",
     "db:createTables": "node ./db/create_tables.js",
-    "db:dropTables": "node ./db/drop_tables.js"
+    "db:dropTables": "node ./db/drop_tables.js",
+    "couchDB:seed": "node ./couchDB/create_db.js && node ./couchDB/seed.js && node ./couchDB/insert_shoes.js && node ./couchDB/insert_reviews.js"
   },
   "repository": {
     "type": "git",

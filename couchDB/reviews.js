@@ -11,7 +11,7 @@ let ratings = [5, 1, 1, 5, 3, 4, 5, 3, 1, 2, 1, 4];
 
 let fit_feedbacks = [1, 0, -1, 1, 1, -1, 1, 1, 0, 0, 1, -1];
 
-let randomIntGenerator = (min, max) => {
+const randomIntGenerator = (min, max) => {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min) + min);
@@ -37,7 +37,7 @@ class Writer {
   }
 };
 
-let generateReviews = async() => {
+const generateReviews = async() => {
   const writer = new Writer('reviews.csv');
 
   let index = randomIntGenerator(0, 13);
@@ -66,6 +66,7 @@ let generateReviews = async() => {
     };
   }
   writer.end();
+  console.log('reviews created');
 };
 
 module.exports = {
