@@ -1,11 +1,10 @@
 const { Shoe, Review } = require('../db/index.js');
 
-function getReviews(shoeId, count) {
+function getReviews(shoeId) {
   return Review.findAll({
     order: [
       ['id', 'DESC']
     ],
-    limit: parseInt(count),
     where: {
       shoe_id: shoeId
     },

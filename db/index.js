@@ -1,13 +1,15 @@
 require('dotenv').config();
+const creds = require('../utils/creds.js')
 
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = new Sequelize('sdc_somebirds_feedback', 'student', '',  {
-  host: process.env.DB_HOST || 'ec2 instance (coming soon)',
-  port: process.env.postgres_PORT,
+  host: creds.host,
+  port: creds.port,
   dialect: 'postgres',
-  // dialiect: 'mysql',
   logging: false
 });
+
+console.log(creds.port)
 
 // use to check database connection
 // sequelize.authenticate()

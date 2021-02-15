@@ -10,9 +10,9 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 
 //read reviews
-app.get('/shoes/:shoeId/reviews/:count', (req, res) => {
-  let { shoeId, count } = req.params;
-  controller.getReviews(shoeId, count)
+app.get('/shoes/:shoeId/reviews', (req, res) => {
+  let { shoeId } = req.params;
+  controller.getReviews(shoeId)
   .then(data => {
     res.send(data);
   })

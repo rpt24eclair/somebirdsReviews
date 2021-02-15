@@ -17,7 +17,7 @@ function App(props) {
   const [ratingFetched, setRatingFetched] = useState(false);
 
   useEffect(() => {
-    Axios.get(`/shoes/${shoeID}/reviews/${reviewCount}`)
+    Axios.get(`/shoes/${shoeID}/reviews`)
     .then(reviews => {
       setReviews(reviews.data);
       setReviewsFetched(true);
