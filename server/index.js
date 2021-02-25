@@ -1,13 +1,24 @@
+require("newrelic");
 const express = require ('express');
 const bodyParser = require('body-parser');
 const controller = require('../controller/index.js');
 const app = express();
 const PORT = process.env.PORT;
+const path = require('path');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(express.static('public'));
+
+app.get('/shoes/:id', (req, res) => {
+  if (req.params.id === 'bundle.js') {
+    res.sendFile(path.resolve(__dirname, '../public/bundle.js'));
+  } else {
+    res.sendFile(path.resolve(__dirname, '../public/index.html'));
+  }
+});
+
 
 //read reviews
 app.get('/shoes/:shoeId/reviews', (req, res) => {

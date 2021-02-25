@@ -14,7 +14,7 @@ function getReviews(shoeId) {
 function getRating(shoeId) {
   return Shoe.findAll({
     where: {
-      model: shoeId
+      id: shoeId
     }
   });
 }

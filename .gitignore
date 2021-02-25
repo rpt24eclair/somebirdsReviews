@@ -5,3 +5,5 @@ bundle.*
 *.env
 *.csv
 utils/index.js
+newrelic.js
+newrelic_agent.log
