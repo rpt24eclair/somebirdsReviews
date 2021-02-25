@@ -19,7 +19,6 @@ app.get('/shoes/:id', (req, res) => {
   }
 });
 
-
 //read reviews
 app.get('/shoes/:shoeId/reviews', (req, res) => {
   let { shoeId } = req.params;
