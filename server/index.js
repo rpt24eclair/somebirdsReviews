@@ -3,8 +3,10 @@ const express = require ('express');
 const bodyParser = require('body-parser');
 const controller = require('../controller/index.js');
 const app = express();
-const PORT = process.env.PORT;
+const PORT = 3003;
 const path = require('path');
+const cors = require('cors');
+app.use(cors());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

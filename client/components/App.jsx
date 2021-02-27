@@ -6,7 +6,7 @@ import styles from '../styles/app.css';
 import Axios from 'axios';
 
 function App(props) {
-  const [shoeID, setShoeID] = useState(props.shoeID || 800);
+  const [shoeID, setShoeID] = useState(props.shoeID || 9570345);
   const [shoeName, setShoeName] = useState('');
   const [reviewCount, setReviewCount] = useState(3);
   const [reviews, setReviews] = useState(['']);
