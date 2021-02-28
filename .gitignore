@@ -7,3 +7,4 @@ bundle.*
 utils/index.js
 newrelic.js
 newrelic_agent.log
+package-lock.json
