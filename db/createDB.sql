@@ -1,1 +1,1 @@
-CREATE DATABASE fec_somebirds_feedback;
+CREATE DATABASE sdc_somebirds_feedback;

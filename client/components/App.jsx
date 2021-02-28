@@ -6,7 +6,7 @@ import styles from '../styles/app.css';
 import Axios from 'axios';
 
 function App(props) {
-  const [shoeID, setShoeID] = useState(props.shoeID || 1);
+  const [shoeID, setShoeID] = useState(props.shoeID || 9570345);
   const [shoeName, setShoeName] = useState('');
   const [reviewCount, setReviewCount] = useState(3);
   const [reviews, setReviews] = useState(['']);
@@ -17,7 +17,7 @@ function App(props) {
   const [ratingFetched, setRatingFetched] = useState(false);
 
   useEffect(() => {
-    Axios.get(`/shoes/${shoeID}/reviews/${reviewCount}`)
+    Axios.get(`/shoes/${shoeID}/reviews`)
     .then(reviews => {
       setReviews(reviews.data);
       setReviewsFetched(true);

@@ -1,9 +1,9 @@
 const model = require('../model/index.js');
 const { getDate } = require('../utils/index.js');
 
-function getReviews(shoeId, count) {
+function getReviews(shoeId) {
   return new Promise((resolve, reject) => {
-    model.getReviews(shoeId, count)
+    model.getReviews(shoeId)
     .then(data => {
       data = data.map(x => {
         return { id: x.id, name: x.name, headline: x.headline, review: x.review, rating: x.rating, fit_feedback: x.fit_feedback, date: getDate(x.createdAt) };

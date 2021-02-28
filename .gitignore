@@ -3,3 +3,7 @@ bundle.*
 *.pem
 *.sh
 *.env
+*.csv
+utils/index.js
+newrelic.js
+newrelic_agent.log
