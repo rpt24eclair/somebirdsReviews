@@ -6,7 +6,7 @@ import styles from '../styles/app.css';
 import Axios from 'axios';
 
 function App(props) {
-  const [shoeID, setShoeID] = useState(props.shoeID || 9570345);
+  const [shoeID, setShoeID] = useState(props.shoeID || 9566);
   const [shoeName, setShoeName] = useState('');
   const [reviewCount, setReviewCount] = useState(3);
   const [reviews, setReviews] = useState(['']);
@@ -49,7 +49,7 @@ function App(props) {
         <Reviews reviews={reviews} />
         <MoreReviewsButton reviewCount={reviewCount} setReviewCount={setReviewCount} />
         <div className={styles.infoContainer}>
-          <p className={styles.text}>currently displaying {reviews.length} of {totalReviews} reviews</p>
+          <p className={styles.text}>currently displaying {reviews.length} reviews</p>
         </div>
       </div>}
     </div>

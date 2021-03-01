@@ -21,7 +21,7 @@ console.log(creds.port)
 // });
 
 const Shoe = sequelize.define('shoe', {
-  name: {
+  shoe_name: {
     type: DataTypes.STRING,
     allowNull: false
   },
@@ -37,14 +37,14 @@ const Shoe = sequelize.define('shoe', {
     type: DataTypes.STRING,
     allowNull: false
   },
-  review_count: {
-    type: DataTypes.INTEGER,
-    allowNull: false
-  }
+  // review_count: {
+  //   type: DataTypes.INTEGER,t
+  //   allowNull: false
+  // }
 }, { timestamps: false });
 
 const Review = sequelize.define('review', {
-  name: {
+  author_name: {
     type: DataTypes.STRING,
     allowNull: false
   },
@@ -72,7 +72,7 @@ const Review = sequelize.define('review', {
       key: 'id'
     }
   },
-}, { timestamps: true });
+}, { timestamps: false });
 
 module.exports = {
   Shoe: Shoe,

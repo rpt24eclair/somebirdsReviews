@@ -39,11 +39,12 @@ const generateShoes = async() => {
   const writer = new Writer('shoes.csv');
 
   let index = randomIntGenerator(0, 13);
+  let shoesIndex = 0;
   let ratingAverage = randomNumberGenerator(1, 5).toFixed(1);
   let fitAverage = randomNumberGenerator(-1, 1).toFixed(1);
 
-  for(let i = 1; i <= 10000000; i++) {
-    if (i % 100000 === 0) {
+  for(let i = 1; i <= 100000; i++) {
+    if (i % 1000 === 0) {
       index = randomIntGenerator(0, 13);
       ratingAverage = randomNumberGenerator(1, 5).toFixed(1);
       fitAverage = randomNumberGenerator(-1, 1).toFixed(1);
@@ -58,7 +59,8 @@ const generateShoes = async() => {
     };
 
     const res = writer.write(content);
-    if (shoesIndex > 101) {
+
+    if (shoesIndex > 98) {
       shoesIndex = 0;
     } else {
       shoesIndex++;
@@ -70,6 +72,7 @@ const generateShoes = async() => {
         await res; // This will wait for the stream to emit the drain event
     };
   };
+
   writer.end();
   console.log('shoes created');
 };

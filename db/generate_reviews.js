@@ -5,9 +5,9 @@ let names = ['Scarlett', 'Emma', 'Tiffany', 'Florentina', 'Jake', 'Ian', 'Jada',
 
 let headlines = ['Best buy!', 'Yesss', 'Nope!', 'Great', 'Bad service', 'I likey', 'Durable as heck!', 'Fine', 'Trash', 'No bueno', 'Worst customer service', 'THE BEST'];
 
-let reviews = [`Hands down the best shoes I have ever purchased! Ever!`, `I will never be buying shoes anywhere else`, `Worst purchase I have ever made`, `Great!`, `Decent shoes, but customer service completely sucks`, `I like very much`, `These bad boys have lasted me 3 years of everyday use. Fantastic quality, can't recommend them enough!`, `Fine, I guess...`, `Allbirds are way better than this trash!`, `No bueno my friends, I've gone through 3 pairs in the last month due to various manufacturing defects. I really love the idea behind this company but until they get the hiccups figured out I will be purchasing my shoes elsewhere`, `Worst customer service department I've ever dealt with`, `Best shoes one can buy.`];
+let reviews = [`Hands down the best shoes I have ever purchased! Ever!`, `I will never be buying shoes anywhere else`, `Worst purchase I have ever made`, `Great!`, `Decent shoes but customer service completely sucks`, `I like very much`, `These bad boys have lasted me 3 years of everyday use. Fantastic qualitycan't recommend them enough!`, `Fine I guess...`, `Allbirds are way better than this trash!`, `No bueno my friends I've gone through 3 pairs in the last month due to various manufacturing defects. I really love the idea behind this company but until they get the hiccups figured out I will be purchasing my shoes elsewhere`, `Worst customer service department I've ever dealt with`, `Best shoes one can buy.`];
 
-let ratings = [5, 1, 1, 5, 3, 4, 5, 3, 1, 2, 1, 4];
+let ratings = [5, 1, 1, 5, 3, 4, 5, 3, 1, 2, 1, 5];
 
 let fit_feedbacks = [1, 0, -1, 1, 1, -1, 1, 1, 0, 0, 1, -1];
 
@@ -42,19 +42,19 @@ const generateReviews = async() => {
 
   let index = randomIntGenerator(0, 13);
 
-  for(let i = 1; i <= 10000000; i++) {
-    if (i % 1000000 === 0) {
+  for(let i = 1; i <= 100000; i++) {
+    if (i % 1000 === 0) {
       index = randomIntGenerator(0, 13);
       console.log(i);
     };
 
-    for(let j = 0; j <= index; j++) {
+    for(let j = 0; j < index; j++) {
       let content = {
         author_name: names[j],
         headline: headlines[j],
+        review: reviews[j],
         rating: ratings[j],
         fit_feedback: fit_feedbacks[j],
-        review: reviews[j],
         shoe_id: i
       };
       const res = writer.write(content);
@@ -69,7 +69,7 @@ const generateReviews = async() => {
   console.log('reviews created');
 };
 
-generateReviews();
+// generateReviews();
 
 module.exports = {
   generateReviews: generateReviews
