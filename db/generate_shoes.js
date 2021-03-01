@@ -43,8 +43,8 @@ const generateShoes = async() => {
   let ratingAverage = randomNumberGenerator(1, 5).toFixed(1);
   let fitAverage = randomNumberGenerator(-1, 1).toFixed(1);
 
-  for(let i = 1; i <= 100000; i++) {
-    if (i % 1000 === 0) {
+  for(let i = 1; i <= 10000000; i++) {
+    if (i % 100000 === 0) {
       index = randomIntGenerator(0, 13);
       ratingAverage = randomNumberGenerator(1, 5).toFixed(1);
       fitAverage = randomNumberGenerator(-1, 1).toFixed(1);

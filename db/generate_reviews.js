@@ -42,8 +42,8 @@ const generateReviews = async() => {
 
   let index = randomIntGenerator(0, 13);
 
-  for(let i = 1; i <= 100000; i++) {
-    if (i % 1000 === 0) {
+  for(let i = 1; i <= 10000000; i++) {
+    if (i % 100000 === 0) {
       index = randomIntGenerator(0, 13);
       console.log(i);
     };
