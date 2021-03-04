@@ -9,3 +9,4 @@ newrelic.js
 newrelic_agent.log
 package-lock.json
 *.csv
+notes.js
