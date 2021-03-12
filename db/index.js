@@ -2,22 +2,22 @@ require('dotenv').config();
 const creds = require('../utils/creds.js')
 
 const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = new Sequelize('sdc_somebirds_feedback', 'student', '',  {
-  host: creds.host,
-  port: creds.port,
+const sequelize = new Sequelize('sdc_somebirds_feedback', 'postgres', 'sdc2021',  {
+	host: '18.191.60.39 ',
+  port: 5432,
   dialect: 'postgres',
   logging: false
 });
 
 console.log(creds.port)
 
-// use to check database connection
-// sequelize.authenticate()
+//use to check database connection
+//sequelize.authenticate()
 // .then(() => {
 //   console.log('Connection has been established successfully.');
 // })
 // .catch((error) => {
-//   console.error('Unable to connect to the database:', error);
+// console.error('Unable to connect to the database:', error);
 // });
 
 const Shoe = sequelize.define('shoe', {

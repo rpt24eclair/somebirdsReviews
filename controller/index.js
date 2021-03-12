@@ -1,15 +1,15 @@
 const model = require('../model/index.js');
 const { getDate } = require('../utils/index.js');
 
-function getReviews(shoeId) {
+function getReviews(shoeId, count) { 
   return new Promise((resolve, reject) => {
-    model.getReviews(shoeId)
+    model.getReviews(shoeId, count)
     .then(data => {
       data = data.map(x => {
-        return { id: x.id, name: x.author_name, headline: x.headline, review: x.review, rating: x.rating, fit_feedback: x.fit_feedback };
-      });
-      resolve(data);
-    })
+      return { id: x.id, name: x.name, headline: x.headline, review: x.review, rating: x.rating, fit_feedback: x.fit_feedback};
+    });
+    resolve(data);
+  })
     .catch(err => {
       reject(err);
     });
@@ -19,16 +19,15 @@ function getReviews(shoeId) {
 function getRating(shoeId) {
   return new Promise((resolve, reject) => {
     model.getRating(shoeId)
-    .then((data) => {
-      console.log(data.length);
-      let { id, shoe_name, model, rating_average, fit_feedback_average } = data[0];
-      resolve({
-        id, shoe_name, model, rating_average, fit_feedback_average
-      });
-    })
-    .catch(err => {
+     .then((data) => {
+       let { id, shoe_name, model, rating_average, fit_feedback_average } = data[0];
+        resolve({
+         id, shoe_name, model, rating_average, fit_feedback_average
+       });
+     })
+     .catch(err => {
       reject(err);
-    });
+     });
   });
 }
 

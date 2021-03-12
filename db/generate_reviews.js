@@ -40,11 +40,11 @@ class Writer {
 const generateReviews = async() => {
   const writer = new Writer('reviews.csv');
 
-  let index = randomIntGenerator(0, 13);
+  let index = randomIntGenerator(0, 10);
 
   for(let i = 1; i <= 10000000; i++) {
     if (i % 100000 === 0) {
-      index = randomIntGenerator(0, 13);
+      index = randomIntGenerator(0, 10);
       console.log(i);
     };
 
@@ -69,7 +69,7 @@ const generateReviews = async() => {
   console.log('reviews created');
 };
 
-// generateReviews();
+//generateReviews();
 
 module.exports = {
   generateReviews: generateReviews

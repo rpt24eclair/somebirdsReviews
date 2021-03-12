@@ -7,12 +7,10 @@
     "start": "nodemon ./server/start.js",
     "build": "webpack -w",
     "test": "jest",
-    "msql:seed": "mysql -u student < ./db/createDB.sql && node ./db/create_tables.js && node ./db/generate_data.js",
-    "psql:seed": "psql postgres -U student < ./db/createDB.sql && node ./db/create_tables.js && node ./db/generate_postgres.js",
-    "psql:csv": "psql postgres -U student < ./db/createDB.sql && node ./db/create_tables.js",
+    "psql:seed": "psql -h '18.191.60.39' -p 5432 -U postgres < ./db/createDB.sql && node ./db/create_tables.js && node ./db/seed.js && time psql -h '18.191.60.39' -p 5432 -U postgres sdc_somebirds_feedback < ./db/copy_shoes.sql && time psql -h '18.191.60.39' -p 5432 -U postgres sdc_somebirds_feedback < ./db/copy_reviews.sql",
     "db:createTables": "node ./db/create_tables.js",
-    "db:dropTables": "node ./db/drop_tables.js",
-    "db:user": "node db/index.js"
+    "db:user": "node db/index.js",
+    "copy": "psql -h '3.136.112.221' -p 5432 -U postgres sdc_somebirds_feedback < ./db/copy_reviews.sql"
   },
   "repository": {
     "type": "git",
@@ -35,10 +33,11 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "newrelic": "^7.1.1",
+    "newrelic": "^7.1.3",
     "path": "^0.12.7",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "redis": "^3.0.2"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.12.11",

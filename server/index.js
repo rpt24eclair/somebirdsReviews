@@ -1,92 +1,94 @@
-require("newrelic");
+require('newrelic');
 const express = require ('express');
-const bodyParser = require('body-parser');
 const controller = require('../controller/index.js');
 const app = express();
 const PORT = 3003;
-const path = require('path');
-const cors = require('cors');
-app.use(cors());
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+const redis = require("redis");
+const client = redis.createClient();
 
 app.use(express.static('public'));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
-app.get('/shoes/:id', (req, res) => {
-  if (req.params.id === 'bundle.js') {
-    res.sendFile(path.resolve(__dirname, '../public/bundle.js'));
-  } else {
-    res.sendFile(path.resolve(__dirname, '../public/index.html'));
-  }
-});
-
-//read reviews
-app.get('/shoes/:shoeId/reviews', (req, res) => {
-  let { shoeId } = req.params;
-  controller.getReviews(shoeId)
-  .then(data => {
-    res.send(data);
-  })
+/*app.get('/shoes/:shoeId/reviews/:count', (req, res) => {
+  let { shoeId, count } = req.params;
+    controller.getReviews(shoeId, count)
+    .then(data => {
+      res.send(data);
+    })
   .catch(err => {
-    console.error(err);
-    res.end();
+      console.error(err);
+      res.end();
+  });
+});*/
+
+app.get('/shoes/:shoeId/reviews/:count', (req, res) => {
+  let {shoeId, count } = req.params;
+  let redisKey = JSON.stringify(shoeId);
+  client.get(redisKey, (err, reply) => {
+    if (reply === null) {
+      controller.getReviews(shoeId, count)
+      .then(data => {
+        client.set(redisKey, JSON.stringify(data), (err, reply) => {
+          res.send(data);
+        })
+      })
+      .catch(err => {
+        console.error(err);
+        res.end();
+      });
+    } else {
+      res.send(reply);
+    }
+
   });
 });
 
-//read rating
-app.get('/shoes/:shoeId/rating', (req, res) => {
+
+/*app.get('/shoes/:shoeId/rating', (req, res) => {
   let { shoeId } = req.params;
   controller.getRating(shoeId)
   .then(data => {
-    res.send(data);
-  })
+      res.send(data);
+    })
   .catch(err => {
-    console.error(err);
-    res.end();
-  });
-});
+      console.error(err);
+      res.end();
+    });
+});*/
 
-//create review
-app.post('/shoes/:shoeId/reviews', (req, res) => {
+app.get('/shoes/:shoeId/rating', (req, res) => {
   let { shoeId } = req.params;
-  let review = req.body;
-  review.shoe_id = Number(shoeId);
-  controller.addReview(review)
-  .then(data => {
-    res.send(data);
-  })
-  .catch(err => {
-    console.error(err);
-    res.end();
+  let redisKey = JSON.stringify(shoeId) + 'Rating';
+
+  client.get(redisKey, (err, reply) => {
+    if (reply === null) {
+      controller.getRating(shoeId)
+      .then(data => {
+        client.set(redisKey, JSON.stringify(data), (err, reply) => {
+          res.send(data);
+        })
+      })
+      .catch(err => {
+	console.error(err);
+        res.end();
+      });
+    } else {
+      res.send(reply);
+    }
   });
 });
 
-//delete review
-app.delete('/shoes/reviews/:id', (req, res) => {
-  let { id } = req.params;
-  controller.deleteReview(id)
-  .then(data => {
-    res.send(data);
-  })
-  .catch(err => {
-    console.error(err);
-    res.end();
-  });
-});
 
-//update review
-app.put('/shoes/reviews/:id', (req, res) => {
-  let { id } = req.params;
-  let updatedReview = req.body;
-  controller.updateReview(id, updatedReview)
-  .then(data => {
-    res.send(data);
-  })
-  .catch(err => {
-    console.error(err);
-    res.end();
-  });
+
+app.get('/loaderio-ad86e0e6363899bac5347efd1f2eb790/', (req, res) => {
+  console.log('its hitting the get endpoint');
+
+  res.attachment('loaderio-ad86e0e6363899bac5347efd1f2eb790.txt')
+  res.type('txt')
+  res.send('loaderio-ad86e0e6363899bac5347efd1f2eb790');;
 });
 
 module.exports = app;
+
